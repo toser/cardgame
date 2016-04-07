@@ -1,0 +1,30 @@
+{
+  "name": "cardgame",
+  "version": "1.0.0",
+  "description": "a cardgame for nodejs",
+  "main": "lib/cardgame.js",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toser/cardgame.git"
+  },
+  "keywords": [
+    "cardgame",
+    "cards"
+  ],
+  "author": "Toni Feistauer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toser/cardgame/issues"
+  },
+  "homepage": "https://github.com/toser/cardgame#readme",
+  "dependencies": {
+    "helptos": "^1.0.6"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-preset-es2015": "^6.6.0"
+  }
+}
