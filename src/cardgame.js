@@ -1,6 +1,6 @@
 'use strict';
 
-import {getConfig, getByName, sortByDeepProp, copyArray} from './helper';
+import {getConfig, getByName, sortByDeepProp, copyArray} from 'helptos';
 
 /**
  * create ad card deck from config cards
