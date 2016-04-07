@@ -62,7 +62,7 @@ let valueToSlack = value => `*${value}*`;
 let cardToSlack = card => `[ ${valueToSlack(card.value)}${colorToSlack(card.color)} ]`;
 
 
-let cardsConfig = getConfig('../config/cardgame.json').cards;
+let cardsConfig = getConfig('../config/cardgame.json', __dirname).cards;
 let deck = createDeck(cardsConfig, __dirname);
 export let players = [];
 
