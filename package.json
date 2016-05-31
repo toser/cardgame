@@ -1,6 +1,6 @@
 {
   "name": "cardgame",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "a cardgame for nodejs",
   "main": "lib/cardgame.js",
   "scripts": {
