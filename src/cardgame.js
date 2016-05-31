@@ -3,12 +3,12 @@
 import {getConfig, getByName, sortByDeepProp, copyArray} from 'helptos';
 
 /**
- * create ad card deck from config cards
+ * create a card deck from config cards
  *
  * @param cards
- * @returns {*}
+ * @returns {function}
  */
-let createDeck = cards => {
+const createDeck = cards => {
 
     let cardRank = 0;
 
@@ -27,9 +27,9 @@ let createDeck = cards => {
  * picks out a random card from deck and removes this card from deck
  *
  * @param deck
- * @returns {{card: *, newDeck: (Array|*)}}
+ * @returns {{card: string, newDeck: Array}}
  */
-let deal = deck => {
+const deal = deck => {
 
     let card = deck[Math.floor(Math.random() * deck.length)],
         newDeck = deck.filter(deckCard => !(deckCard.rank === card.rank));
@@ -44,32 +44,35 @@ let deal = deck => {
  * color string to slack emoji
  *
  * @param color
+ * @returns {string}
  */
-let colorToSlack = color => `:${color}:`;
+const colorToSlack = color => `:${color}:`;
 
 /**
  * value to slack bold message
  *
  * @param value
+ * @returns {string}
  */
-let valueToSlack = value => `*${value}*`;
+const valueToSlack = value => `*${value}*`;
 
 /**
  * create a card slack message
  *
  * @param card
+ * @returns {string}
  */
-let cardToSlack = card => `[ ${valueToSlack(card.value)}${colorToSlack(card.color)} ]`;
+const cardToSlack = card => `[ ${valueToSlack(card.value)}${colorToSlack(card.color)} ]`;
 
 
-let cardsConfig = getConfig('../config/cardgame.json', __dirname).cards;
+const cardsConfig = getConfig('../config/cardgame.json', __dirname).cards;
 let deck = createDeck(cardsConfig, __dirname);
 export let players = [];
 
 /**
  * reset the game
  */
-export let newGame = () => {
+export const newGame = () => {
 
     deck = createDeck(cardsConfig);
     players = [];
@@ -79,9 +82,9 @@ export let newGame = () => {
  * pick a card and give it to a player
  *
  * @param playerName
- * @returns {*}
+ * @returns {object}
  */
-export let pick = (playerName) => {
+export const pick = (playerName) => {
 
     if (getByName(players, playerName).length) {
         return false;
@@ -104,7 +107,7 @@ export let pick = (playerName) => {
  *
  * @type {function(): Array}
  */
-export let summary = (players => sortByDeepProp(players, '.card.rank'));
+export const summary = (players => sortByDeepProp(players, '.card.rank'));
 
 /**
  * convert player object to slack message
@@ -112,7 +115,7 @@ export let summary = (players => sortByDeepProp(players, '.card.rank'));
  * @param player
  * @returns {string}
  */
-export let playerToSlack = player => `> *${player.name}* picks ${cardToSlack(player.card)}`;
+export const playerToSlack = player => `> *${player.name}* picks ${cardToSlack(player.card)}`;
 
 /**
  * converts game summery to slack message
@@ -120,7 +123,7 @@ export let playerToSlack = player => `> *${player.name}* picks ${cardToSlack(pla
  * @param summary
  * @returns {string}
  */
-export let gameToSlack = summary => {
+export const gameToSlack = summary => {
 
     let reversedSummery = copyArray(summary).reverse();
     let output = `>>> :crown: *${reversedSummery[0].name}* leads with ${cardToSlack(reversedSummery[0].card)}`;

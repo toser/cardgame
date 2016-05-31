@@ -4,7 +4,8 @@
   "description": "a cardgame for nodejs",
   "main": "lib/cardgame.js",
   "scripts": {
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "demo": "npm run build && node lib/demo.js"
   },
   "repository": {
     "type": "git",
