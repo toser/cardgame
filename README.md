@@ -1,6 +1,6 @@
 # cardgame
 
-A simple card picking game for nodejs. It also has a Slack parser, so you kan use it in your Slack bot.
+A simple card picking game for nodejs. It also has a Slack parser, so you can use it with your Slack bot.
 
 It is written in ES6 syntax (/src folder) and compiled to ES5 (/lib folder)
 
@@ -18,7 +18,7 @@ Run it with: `npm run demo`
 
 ## installation
 
-Install the node package within your console with:
+Install the node package within your console:
 
 `npm install --save cardgame`
 
